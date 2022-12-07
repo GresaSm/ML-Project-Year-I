@@ -1,0 +1,14 @@
+.article-banner {
+  width: 38.1cm;
+  height: 16cm;
+  border: 0;
+}
+
+img[src="/Users/gresasmolica/Downloads/unsplash.jpg"] {
+  display: block;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  margin: 50px 25px 0px 0px;
+}
+
