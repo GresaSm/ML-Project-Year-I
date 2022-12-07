@@ -9,11 +9,8 @@ description: |
 preview: /Users/gresasmolica/Downloads/unsplash.jpg
 author: 
   - name: Carmen Garro
-    url: https://allisonkoh.github.io
   - name: Maria José Lee
-    url:
   - name: Gresa Smolica
-    url:  
 date: "`r Sys.Date()`" 
 categories: 
   - Classification methods in Machine Learning 
@@ -49,29 +46,30 @@ library(jpeg)
 
 The main objective of this paper is the classification of formal and informal workers in the Colombian Labour Market using the country’s Large Integrated Household Survey (GEIH by its initials in Spanish)[@GEIH]^[Gran Encuesta Integrada de Hogares]. While historically Colombia has maintained a moderately high rate of informality, the pandemic and its subsequent shocks had a negative effect on society as a whole, making unemployment rates peak, and driving more people toward informality. All of this had a significant impact on the labour conditions, social contributions, and in general, the well-being of workers, both in the formal and informal market. 
 
-The aim is to bring an innovative and useful policy-making tool to address the informal economy, by illustrating how machine learning classification techniques can significantly benefit the public policy area, not only in policy-design, but also in policy evaluation and implementation [@loftis_mortensen_2018]. Among the main findings shown by our models is the strong relation between the variables associated to particular Working Characteristics of respondents - *namely number of employees in the workplace, environment of work (household, office, vehicle, ...), main mode of transportation to work, and mainly engaged activity of last week (study, work, looking for a job)*- and the likelihood of being classified as an informal or formal worker
+The aim is to bring an innovative and useful policy-making tool to address the informal economy, by illustrating how machine learning classification techniques can significantly benefit the public policy area, not only in policy-design, but also in policy evaluation and implementation [@loftis_mortensen_2018]. Among the main findings shown by our models is the strong relation between the variables associated to particular Working Characteristics of respondents - *namely number of employees in the workplace, environment of work (household, office, vehicle, ...), main mode of transportation to work, and mainly engaged activity of last week (study, work, looking for a job)*- and the likelihood of being classified as an informal or formal worker.
 
-## Introduction / Background
+## Introduction 
 
-The Informal Economy can be understood as the goods and services that are purchased or contracted outside of formal jurisdiction in a country or economy. Because of its hidden nature, governments tend to have a hard time dealing with it, as well as the consequences that emerge from it. One of the problems of this phenomenon is the Fiscal Aspect, as those who are not recorded cannot be taxed, in addition to the added difficulty of ensuring a safe work space and appropriate social and health benefits for those involved. 
+The informal economy can be understood as the goods and services that are purchased or contracted outside of formal jurisdiction in a country or economy. Because of its hidden nature, governments tend to have a hard time dealing with it, as well as the consequences that emerge from it. One of the problems of this phenomenon is the fiscal aspect, as those who are not recorded cannot be taxed, in addition to the added difficulty of ensuring a safe work space and appropriate social and health benefits for those involved. 
 
 Due to these overall negative effects, having a clear understanding of how to identify a person who is part of the informal sector tends to be a priority for governments. In addition to understanding the factors that influence its overall size. A strong political will, combined with a thoroughly thought-out estimation process can be the way to carry this out effectively. 
 
 Amongst the countries with a high percentage of informal workers within their economy, we find Colombia - a country that historically has had a share of around half its working force as informal, but for which, after the COVID-19 Pandemic, this has steadied closer to 60%. Colombia also stands out by virtue of its commitment to providing open and public data, with databases concerning the current state of infrastructure, the environment, the population, etc., including the GEIH. Precisely such data is used to pick up on the manifestation of the informal economy, with the intention of it being able to be used towards generating better policies. 
 
-The reviewed literature acknowledges the difficulty of estimating the size of the informal economy for different countries, mentioning among the main hurdles, the lack or non-consistency of statistics that routinely cover households. Our approach, however, addresses this challenge directly, by exploiting the fact that this survey has been run on a consistent basis for the past 13 years, accumulating a significant amount of data, and thus, creating the opportunity for a representative estimation which will further enrich the knowledge and the information on Informal Economy, serving then directly as a prediction tool, and indirectly, as a potential tool for better policy design.
+The reviewed literature acknowledges the difficulty of estimating the size of the informal economy for different countries, mentioning among the main hurdles, the lack or non-consistency of statistics that routinely cover households. Our approach, however, addresses this challenge directly, by exploiting the fact that this survey has been run on a consistent basis for the past 13 years, accumulating a significant amount of data, and thus, creating the opportunity for a representative estimation which will further enrich the knowledge and the information on informal economy, serving then directly as a prediction tool, and indirectly, as a potential tool for better policy design.
 
 Our project aims to build upon the existing research carried out by the International Labour Organisation, International Monetary Fund and the World Bank when tackling the informal economy. As an added value to such literature, our work contributes to a more narrow approach of tackling a public policy challenge with the support of machine learning models.
 
 ## Related Work 
 
-Until recent years, studies and research on informality have been conducted mostly from a qualitative perspective. Focusing mostly in developing countries, the Informal Economy has been seen as a phenomenon related to geographical characteristics (rural/urban) or by the state of development of the country where it manifests (developing/poor countries). Some estimate that by 2021, said sector constituted more than the 70% of total employment in these countries, and roughly one-third of output. According to the World Bank's report “The long shadow of informality”, informal businesses constitute 72 percent of firms in the services sector, its workers are predominantly women, and they are usually young and low-skilled[@ohnsorge_yu_2022]. 
+Until recent years, studies and research on informality have been conducted mostly from a qualitative perspective. Focusing mostly in developing countries, the informal economy has been seen as a phenomenon related to geographical characteristics (rural/urban) or by the state of development of the country where it manifests (developing/poor countries). Some estimate that by 2021, said sector constituted more than the 70% of total employment in these countries, and roughly one-third of output. According to the World Bank's report “The long shadow of informality”, informal businesses constitute 72 percent of firms in the services sector, its workers are predominantly women, and they are usually young and low-skilled[@ohnsorge_yu_2022]. 
 
-However, an increased interest in this topic shed further light on the complexity of the issue and the reality that came with it. The existence of undeclared work was evidenced in developed countries, together with the fact that this harmful practice was going to stay around for longer in the economies of the world [@franic_2022]. Alogogianni et.al, argue that employing advanced machine learning techniques in the data produced by the labour inspectorates and the e-Government public services,  could make up for the difficulties when it comes to institutions lacking human and financial resources to address the issue, but also in providing significant assistance in undeclared work prediction and understanding its features [@franic_2022]. 
+However, an increased interest in this topic shed further light on the complexity of the issue and the reality that came with it. The existence of undeclared work was evidenced in developed countries, together with the fact that this harmful practice was going to stay around for longer in the economies of the world [@franic_2022]. Alogogianni et.al, argue that employing advanced machine learning techniques in the data produced by the labour inspectorates and the e-Government public services, could make up for the difficulties when it comes to institutions lacking human and financial resources to address the issue, but also in providing significant assistance in undeclared work prediction and understanding its features [@franic_2022]. 
 
 Similar to our model, the authors argue that classification algorithms may learn from datasets containing past labour inspection findings and produce classifiers that effectively predict labour law violations, as well as provide understandable explanations for these predictions.
 
 However the challenge noticed throughout the reviewed literature lies in the hidden nature of the informal economy resulting in it being underrepresented in datasets (such as the labour institutions surveys, household surveys, etc.), a very important component that hinders the machine learning process. However, going back to the indicators set by several international organisations such as ILO, World Bank, etc., several features of the informal economy have been identified and used when predicting within this area. In his research paper, 'Informal Work in Numbers', Hummel employs a machine learning algorithm in the data derived from the Latin American Public Opinion Project. The used regression model suggested that informal workers are more likely to organise in low-capacity countries [@hummel_2021]. 
+
 On a policy level, drawing back to Colombia, the arrival of COVID-19 disrupted about a quarter of employment. From a local perspective, or from the workers side, informality was both praised and criticised. While it helped the economy to bounce back from the pandemic devastation, in the labour conditions aspect, workers experienced and are experiencing lack of employment protection. Adjusting to informality projects longer-term costs, therefore it is crucial for such “flexibility”/adjustment not to de-prioritize designing policies that create a more formal economy in the medium-term [@jorge_alvarez]. Machine-learning tools seem to bring the needed innovation in learning from the process and helping to address the issue in the medium-long term.
 
 ## Proposed Method 
@@ -93,16 +91,7 @@ image2<- readJPEG("/Users/gresasmolica/Downloads/Class%20imbalance.jpeg")
 grid.raster(image2)
 ```
 
-For our baseline which was the Logistic Regression, we applied the following: Primarily the training and testing set were set up with a test size of 0.30 and a random state of 537. For the pre-processing phase the model used the Standard Scaler and the OneHotEncoder which made it possible to encode all the independent categorical variables into binary columns for each category[@scikit_learn]. Within the pipeline, the Logistic Model was set to have 1000 maximum iterations through the “lbfgs” solver. After fitting our training set and using it to predict our test one, our baseline model calculated the following results:
-
-```{r fig3, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Table 1. Baseline and model scores"}
-#knitr::include_graphics("/Users/gresasmolica/Downloads/Table 3.1.jpg")
-
-image3<- readJPEG("/Users/gresasmolica/Downloads/Table 3.1.jpg")
-grid.raster(image3)
-```
-
-Against these results, we followed with the application of the Decision Tree and XGBoost models.
+For our baseline which was the Logistic Regression, we applied the following: Primarily the training and testing set were set up with a test size of 0.30 and a random state of 537. For the pre-processing phase the model used the Standard Scaler and the OneHotEncoder which made it possible to encode all the independent categorical variables into binary columns for each category[@scikit_learn]. Within the pipeline, the Logistic Model was set to have 1000 maximum iterations through the “lbfgs” solver. After fitting our training set and using it to predict our test one, our baseline model calculated an F1 score of 0.93 and a MCC of 0.86. Against these results, we followed with the application of the Decision Tree and XGBoost models.
 
 ## Experiments 
 
@@ -123,7 +112,7 @@ The subsets are named as follows: State division: Area, Cabecera and Resto. Subs
 
 Rationale: The subsets Inactives and Unoccupied were removed, as, we were interested exclusively in those currently holding a job, as those are the ones over which we are then able to classify as informal or formal workers.The experimental dataset consisted of around 40,000 observations. Open ended questions, missing values and duplicated columns were dropped together with columns that had more than 50,000 of such invalid values. The y-target variable depended on the question: Given that a person is employed, do they claim to have a contract? - If yes, they were classified as formal workers, and if not they were classified as informal. The performance of the three models that we ran in this sample are shown below: 
 
-```{r fig4, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of models in 2019 quarter dataset"}
+```{r fig3, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of models in 2019 quarter dataset"}
 #knitr::include_graphics("/Users/gresasmolica/Downloads/Performance of models 2019 quarter_page-0001.jpg")
 
 image4<- readJPEG("/Users/gresasmolica/Downloads/Performance of models 2019 quarter_page-0001.jpg")
@@ -135,7 +124,7 @@ three models were also run in a bigger sample, the complete dataset of the year 
 
 The three aforementioned evaluation metrics were employed to evaluate the models. The following show the results of the Confusion Matrixes for all three models:
 
-```{r fig5, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of models in 2019 quarter dataset (Logistic Regression in the left, XGBoost in the centre, and Decision Tree in the right"}
+```{r fig4, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of models in 2019 quarter dataset (Logistic Regression in the left, XGBoost in the centre, and Decision Tree in the right"}
 #knitr::include_graphics("/Users/gresasmolica/Downloads/Models.jpg")
 
 image5<- readJPEG("/Users/gresasmolica/Downloads/Models.jpg")
@@ -144,16 +133,16 @@ grid.raster(image5)
 
 Moving along with evaluation metrics, the graph below shows the F1 score and MCC, reafirming the Decision Tree model as the best performing one.
 
-```{r fig6, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of models in 2019 dataset"}
+```{r fig5, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of models in 2019 dataset"}
 #knitr::include_graphics("/Users/gresasmolica/Downloads/Evaluation%20metric%202.jpeg")
 
 image6<- readJPEG("/Users/gresasmolica/Downloads/Evaluation%20metric%202.jpeg")
 grid.raster(image6)
 ```
 
-In the dataset of 2021, the 6 groups that are formed by the characteristics of the working people/respondents and their working environments are separated and evaluated into the best model, which is the decision tree. According to the evaluation metric F1, the variables that act as a better input for the chosen model are those associated with unexpected expenses and working characteristics. However, when looking at the MCC the model that outperforms all others is the one with the input of working characteristics.
+In the dataset of 2021, the 6 groups that are formed by the characteristics of the working people/respondents and their working environments are separated and evaluated into the best model, which is the decision tree. According to the evaluation metric F1, the variables that act as a better input for the chosen model are those associated with unexpected expenses and working characteristics. However, when looking at the MCC, the model that outperforms all others is the one with the input of working characteristics.
 
-```{r fig7, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Subset categories performance with the DT"}
+```{r fig6, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Subset categories performance with the DT"}
 #knitr::include_graphics("/Users/gresasmolica/Downloads/Subsets_page-0001.jpg")
 
 image7<- readJPEG("/Users/gresasmolica/Downloads/Subsets_page-0001.jpg")
@@ -163,24 +152,14 @@ grid.raster(image7)
 
 Results: Final phase - Running the best-performing model in the dataset of 2021 and the subsets or categories with predictive power: Prior to applying the predicting model in the testing dataset, the following figure showed the proportion of classes in the 2021 dataset: 
 
-```{r fig8, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Class distribution in 2021 dataset"}
+```{r fig7, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Class distribution in 2021 dataset"}
 #knitr::include_graphics("/Users/gresasmolica/Downloads/class%20freq%20test%20data.jpeg")
 
 image8<- readJPEG("/Users/gresasmolica/Downloads/class%20freq%20test%20data.jpeg")
 grid.raster(image8)
 ```
 
-Commenting the quantitative results: Running the Decision Tree model in the final dataset of 2021, showed the following results:
-
-```{r fig9, eval = TRUE, echo = FALSE, out.width = '100%', fig.cap = "Performance of DT model in the 2021 dataset"}
-#knitr::include_graphics("/Users/gresasmolica/Downloads/DT in 2021_page-0001.jpg")
-
-image9<- readJPEG("/Users/gresasmolica/Downloads/DT in 2021_page-0001.jpg")
-grid.raster(image9)
-```
-
-The model was run with the 4 variables that make up the working characteristics subset. The evaluation score for
-this model of the MCC has a score of 0.79. This implies that most of the labels are being predicted correctly.
+Commenting the quantitative results: After running the Decision Tree model in the final dataset of 2021, it calculated an F1 score of 0.89 and a MCC of 0.79. The model was run with the 4 variables that make up the working characteristics subset. The evaluation score for this model of the MCC has a score of 0.79. This implies that most of the labels are being predicted correctly.
 
 
 ## Analysis 
